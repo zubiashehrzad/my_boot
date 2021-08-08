@@ -1,0 +1,44 @@
+﻿@model IEnumerable<my_boot.Models.Product>
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Checkout</h2>
+
+      
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Bill</th>
+                          
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var item in TempData["cart"] as List<my_boot.Models.Cart>)
+                {
+                        <tr>
+                            <td>@item.productid</td>
+                            <td>@item.prductname</td>
+                            <td>@item.price</td>
+                            <td>@item.qty</td>
+                            <td>@item.bill</td>
+                        </tr>
+                }
+                      
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan=" 4"></td>
+                            <td>@TempData["total"]</td>
+                        </tr>
+
+
+                    </tfoot>
+                </table>
+            

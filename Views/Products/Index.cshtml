@@ -1,0 +1,90 @@
+﻿@model IEnumerable<my_boot.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+<p>
+    @if (@TempData["total"] == null)
+    {
+    <h3>Total Bill:£0</h3> 
+    }
+    else
+    {
+        <h3>Total Bill: £ @TempData["total"]</h3>
+    }
+
+    @Html.ActionLink("Create New", "Create")
+    <br><br />
+    @Html.ActionLink("Check out", "Checkout", "Products")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.P_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_price)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Cat_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_name)
+        </td>
+        <td>
+           @* @Html.DisplayFor(modelItem => item.P_image)*@
+            <img src="@Url.Content(item.P_image)" alt="Girl in a jacket" style="height : 60px;width : 60px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_price)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Cat_name)
+        </td>
+        <td>
+            @*  <a class="btn btn-danger" href="#">Add To Cart</a>*@
+            @* <input type="submit" value="Add to Cart" class="fa fa-cart" />*@
+            <!--<a href='@Url.Action("AddToCart", "Products")'>
+        <input type='button' value='Dummy Button' />
+    </a>-->
+            @*  @Html.ActionLink("Add", "AddToCart", "Products")|*@
+
+            @*  <input type="button" value="Add" onclick="location.href='@Url.Action("AddToCart","Products")'" />*@
+           @* <a href="/Products/AddToCart" class="Button">ADD To Cart</a>*@
+            @Html.ActionLink("Add To Cart", "AddToCart", new { id = item.P_id }) |
+
+            @Html.ActionLink("Edit", "Edit", new { id = item.P_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.P_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.P_id })
+        </td>
+    </tr>
+}
+
+</table>

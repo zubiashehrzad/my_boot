@@ -1,0 +1,68 @@
+﻿@model my_boot.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.P_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_image)
+            <img src="@Url.Content(Model.P_image)" alt="Girl in a jacket" style="height : 60px;width : 60px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_price)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Cat_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Cat_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.P_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

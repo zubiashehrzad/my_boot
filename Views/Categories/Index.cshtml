@@ -1,0 +1,48 @@
+﻿@model IEnumerable<my_boot.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Cat_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cat_image)
+        </th>
+
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cat_name)
+    </td>
+
+    <td>
+       @Html.DisplayFor(modelItem => item.Cat_image)
+        <img src="@Url.Content(item.Cat_image)" alt="Girl in a jacket" style="height : 60px;width : 60px;" />
+
+    </td>
+    <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Cat_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Cat_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Cat_id })
+        </td>
+</tr>
+    }
+
+</table>
+
+
+
